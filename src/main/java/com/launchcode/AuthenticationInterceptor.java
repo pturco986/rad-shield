@@ -7,11 +7,12 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.launchcode.shield.controllers.AbstractController;
+import org.launchcode.shield.models.User;
 import org.launchcode.shield.models.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import org.springframework.web.servlet.mvc.AbstractController;
+
 
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 
@@ -28,10 +29,10 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 			
 			boolean isLoggedIn = false;
 			User user;
-			Integer userID = (Integer) request.getSession().getAttribute(AbstractController.userSessionKey);
+			Integer userId = (Integer) request.getSession().getAttribute(AbstractController.userSessionKey);
 			
-			if (userID != null) {
-				user = userDao.findbyUid(userId);
+			if (userId != null) {
+				user = userDao.findByUid(userId);
 				
 				if (user != null) {
 					isLoggedIn = true;
