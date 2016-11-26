@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="dochead">
+	<link th:href="@{/css/normalize.css}" rel="stylesheet" />
+	<link th:href="@{/css/styles.css}" rel="stylesheet" />
+	<title>Radiation Shielding</title>
+</head>
+
+<body>
+
+<nav th:fragment="navigation">
+	<ul id="user-account">
+		<li><a href="/login">Login</a></li>
+		<li><a href="/logout">Logout</a></li>	
+	</ul>
+	<ul>
+		<li><a href="/">home</a></li>
+		<li><a href="/calc">All calculations</a></li>
+		<li><a href="/calc/equation">New calculation</a></li>
+	</ul>
+</nav>
+
+</body>
+</html>

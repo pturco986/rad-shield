@@ -3,6 +3,7 @@ package org.launchcode.shield.controllers;
 import javax.servlet.http.HttpSession;
 
 import org.launchcode.shield.models.User;
+import org.launchcode.shield.models.dao.EquationDao;
 import org.launchcode.shield.models.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,6 +11,10 @@ public abstract class AbstractController {
 	
 	@Autowired
 	protected UserDao userDao;
+	
+	@Autowired
+	protected EquationDao equationDao;
+	
 	public static final String userSessionKey = "user_id";
 	
 	protected User getUserFromSession(HttpSession session) {

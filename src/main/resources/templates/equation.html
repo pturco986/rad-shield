@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org/">
+<head th:fragment="template :: dochead">
+</head>
+<body>
+
+<div th:replace="template :: navigation"></div>
+
+	<!-- Show individual calculations here. Intention
+	to add additional functionality such as primary or secondary
+	wall and possibly what machine is being used -->
+	<h2 class="equation-shielding" th:text="{$equation.shielding}"></h2>
+	
+	<p class="equation-date">Written on <span th:text="${#dates.format(equation.created, 'yyyy-MM-dd')}"></span></p>
+</body>
+</html>	

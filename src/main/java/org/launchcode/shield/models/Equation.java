@@ -23,23 +23,23 @@ public class Equation extends AbstractEntity{
 	private float limit; //permissible limit (is it open for public or only workers?)
 	private float useFactor; //User factor should always equal 1
 	private float distance; //distance from machine to wall
-	private float shielding; //The final result of these
+	
 	private User author;
 	private Date created;
 	private Date modified;
 	
 	public Equation() {}
 	
-	public Equation(float patients, float workload, float limit, float useFactor, float distance, float shielding, User author) {
+	public Equation(String patients, String workload, String limit, String useFactor, String distance, User author) {
 		
 		super();
 		
-		this.patients = patients;
-		this.workload = workload;
-		this.limit = limit;
-		this.useFactor = useFactor;
-		this.distance = distance;
-		this.shielding = shielding;
+		float shielding; //The final result of these
+		this.patients = Float.parseFloat(patients);
+		this.workload = Float.parseFloat(workload);
+		this.limit = Float.parseFloat(limit);
+		this.useFactor = Float.parseFloat(useFactor);
+		this.distance = Float.parseFloat(distance);
 		this.author = author;
 		this.created = new Date();
 		this.updated();
@@ -49,11 +49,11 @@ public class Equation extends AbstractEntity{
 	
 	@NotNull
 	@Column(name = "patients")
-	public float getPatients() {
+	public Float getPatients() {
 		return patients;
 	}
 
-	public void setPatients(float patients) {
+	public void setPatients(Float patients) {
 		this.patients = patients;
 		this.updated();
 	}
