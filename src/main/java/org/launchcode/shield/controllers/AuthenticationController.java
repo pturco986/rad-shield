@@ -41,7 +41,7 @@ public class AuthenticationController extends AbstractController {
 				User user = new User(username, password);
 				userDao.save(user);
 				this.setUserInSession(request.getSession(), user);
-				return "redirect:/blog/newpost"; //TODO change this so it reflects equation not post
+				return "redirect:/shield/newcalc"; //TODO change this so it reflects equation not post
 			} 
 			
 			if (!User.isValidPassword(password) || password == null) {
@@ -82,7 +82,7 @@ public class AuthenticationController extends AbstractController {
 			//need to then set the user in the specific session instance
 			if (user.isMatchingPassword(password)) {
 				this.setUserInSession(request.getSession(), user);
-				return "redirect:blog/newpost";//TODO change this so it reflects equation not Post
+				return "redirect:shield/newcalc";//TODO change this so it reflects equation not Post
 			}
 			
 			model.addAttribute("error", "Incorrect password");

@@ -9,7 +9,7 @@
 	<h1>Radiation Shielding users</h1>
 
 	<!--  TODO - list all users, with links to to their specific calculations for shielding -->
-	<a th:each="user : ${users}" th:href="'/shields/' + ${user.username}" th:text="${user.username}"><br>users<br></a>
+	<a th:each="user : ${users}" th:href="'/shield/' + ${user.username}" th:text="${user.username}"><br>users<br></a>
 	
 	
 </body>

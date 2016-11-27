@@ -19,7 +19,7 @@ public class EquationController extends AbstractController{
 	public String newEquationForm() {
 		return "newcalc";
 	}
-	//TODO make sure to add the proper html file names
+	//TODO make sure to add the proper html file names TODO Double check
 	@RequestMapping(value = "/shields/newcalc", method = RequestMethod.POST)
 	public String newEquation(HttpServletRequest request, Model model) {
 		String patients = request.getParameter("patients");
@@ -54,7 +54,7 @@ public class EquationController extends AbstractController{
 	//handles requests specific to a username and uid
 	@RequestMapping(value = "shields/{username}/{uid}", method = RequestMethod.GET)
 	public String singleEquation(@PathVariable String username, @PathVariable int uid, Model model) {
-		//TODO implementation of a single equation (or calc)
+		//TODO implementation of a single equation
 		Equation equation = equationDao.findByUid(uid);
 		model.addAttribute("equation", equation);
 		return "equation";

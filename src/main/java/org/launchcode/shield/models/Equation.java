@@ -9,8 +9,6 @@ import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import javassist.expr.Cast;
-
 
 	//NOTE
 	//For the purposes of this program, the first version will only do the equation
@@ -110,7 +108,7 @@ public class Equation extends AbstractEntity{
 	}
 	
 	@SuppressWarnings("unused")
-	public void setAuthor(User author) {
+	private void setAuthor(User author) {
 		this.author = author;
 	}
 	
@@ -122,7 +120,7 @@ public class Equation extends AbstractEntity{
 	}
 	
 	@SuppressWarnings("unused")
-	public void setCreated(Date created) {
+	private void setCreated(Date created) {
 		this.created = created;
 	}
 	
@@ -133,7 +131,7 @@ public class Equation extends AbstractEntity{
 	}
 	
 	@SuppressWarnings("unused")
-	public void setModified(Date modified) {
+	private void setModified(Date modified) {
 		this.modified = modified;
 	}
 	
