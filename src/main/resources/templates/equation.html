@@ -12,5 +12,7 @@
 	<h2 class="equation-shielding" th:text="{$equation.shielding}"></h2>
 	
 	<p class="equation-date">Written on <span th:text="${#dates.format(equation.created, 'yyyy-MM-dd')}"></span></p>
+
+<div th:replace="template :: footer"></div>
 </body>
 </html>	
