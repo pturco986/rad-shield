@@ -9,6 +9,8 @@ import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import javassist.expr.Cast;
+
 
 	//NOTE
 	//For the purposes of this program, the first version will only do the equation
@@ -19,7 +21,7 @@ import javax.validation.constraints.NotNull;
 public class Equation extends AbstractEntity{
 	
 	private float patients; //number of patients
-	private float workload; //average workload (dose) per patient
+	private float workload; //average workload (dose) per patient (typically .6)
 	private float limit; //permissible limit (is it open for public or only workers?)
 	private float useFactor; //User factor should always equal 1
 	private float distance; //distance from machine to wall
@@ -34,7 +36,7 @@ public class Equation extends AbstractEntity{
 		
 		super();
 		
-		float shielding; //The final result of these
+		float barrier; //The final result of these
 		this.patients = Float.parseFloat(patients);
 		this.workload = Float.parseFloat(workload);
 		this.limit = Float.parseFloat(limit);
@@ -43,7 +45,7 @@ public class Equation extends AbstractEntity{
 		this.author = author;
 		this.created = new Date();
 		this.updated();
-		
+		barrier = (this.limit)*((float)(Math.pow(this.distance, 2)))/(this.workload*this.patients);
 		author.addEquation(this);
 	}
 	
@@ -138,5 +140,6 @@ public class Equation extends AbstractEntity{
 	private void updated() {
 		this.modified = new Date();
 	}
+	
 	
 }

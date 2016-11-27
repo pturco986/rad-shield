@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class EquationController extends AbstractController{
 	
-	@RequestMapping(value ="/shield/newpost", method = RequestMethod.GET)
+	@RequestMapping(value ="/shields/newcalc", method = RequestMethod.GET)
 	public String newEquationForm() {
-		return "newpost";
+		return "newcalc";
 	}
 	//TODO make sure to add the proper html file names
-	@RequestMapping(value = "/shield/newpost", method = RequestMethod.POST)
+	@RequestMapping(value = "/shields/newcalc", method = RequestMethod.POST)
 	public String newEquation(HttpServletRequest request, Model model) {
 		String patients = request.getParameter("patients");
 		String workload = request.getParameter("workload");
@@ -38,7 +38,7 @@ public class EquationController extends AbstractController{
 	
 		Equation equation = new Equation(patients, workload, limit, useFactor, distance, user);
 		equationDao.save(equation);
-		return String.format("redirect:/shield/%s/%s", user.getUsername(), equation.getUid());
+		return String.format("redirect:/shields/%s/%s", user.getUsername(), equation.getUid());
 		//redirects to the new calculation for the shielding amount
 		}
 		
@@ -52,7 +52,7 @@ public class EquationController extends AbstractController{
 	}
 	
 	//handles requests specific to a username and uid
-	@RequestMapping(value = "shield/{username}/{uid}", method = RequestMethod.GET)
+	@RequestMapping(value = "shields/{username}/{uid}", method = RequestMethod.GET)
 	public String singleEquation(@PathVariable String username, @PathVariable int uid, Model model) {
 		//TODO implementation of a single equation (or calc)
 		Equation equation = equationDao.findByUid(uid);
@@ -60,12 +60,12 @@ public class EquationController extends AbstractController{
 		return "equation";
 	}
 	
-	@RequestMapping(value ="shield/{username}", method = RequestMethod.GET)
+	@RequestMapping(value ="shields/{username}", method = RequestMethod.GET)
 	public String userEquations(@PathVariable String username, Model model) {
 		//TODO Implementation of a user's equations
 		User author = userDao.findByUsername(username);
 		List<Equation> equations = author.getEquations();
 		model.addAttribute("equations", equations);
-		return "shield";
+		return "shields";
 	}
 }
