@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
@@ -16,7 +18,7 @@ import javax.validation.constraints.NotNull;
 	//And that everything else beyond what is input by a user remains constant
 @Entity
 @Table(name = "equation")
-public class Equation extends AbstractEntity{
+public class Equation {
 	
 	private float patients; //number of patients
 	private float workload; //average workload (dose) per patient (typically .6)
@@ -29,6 +31,20 @@ public class Equation extends AbstractEntity{
 	private Date modified;
 	
 	public Equation() {}
+	
+private int uid;
+	
+	@Id
+	@GeneratedValue
+	@NotNull
+	@Column(name = "uid", unique = true)
+	public int getUid() {
+		return this.uid;
+	}
+	
+	protected void setUid(int uid) {
+		this.uid = uid;
+	}
 	
 	public Equation(String patients, String workload, String limit, String useFactor, String distance, User author) {
 		

@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,7 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 @Table(name = "user")
-public class User extends AbstractEntity{
+public class User {
 	
 	private String username;
 	private String pwHash;
@@ -24,6 +26,20 @@ public class User extends AbstractEntity{
 	private List<Equation> equations;
 	
 	public User() {}
+	
+private int uid;
+	
+	@Id
+	@GeneratedValue
+	@NotNull
+	@Column(name = "uid", unique = true)
+	public int getUid() {
+		return this.uid;
+	}
+	
+	protected void setUid(int uid) {
+		this.uid = uid;
+	}
 	
 	public User(String username, String password) {
 		

@@ -1,4 +1,4 @@
-package com.launchcode;
+package org.launchcode;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -13,9 +13,8 @@ import org.launchcode.shield.models.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
-
+	
 	@Autowired
 	UserDao userDao;
 	
