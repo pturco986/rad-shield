@@ -25,9 +25,7 @@ public class User {
 	
 	private List<Equation> equations;
 	
-	public User() {}
-	
-private int uid;
+	private int uid;
 	
 	@Id
 	@GeneratedValue
@@ -40,6 +38,8 @@ private int uid;
 	protected void setUid(int uid) {
 		this.uid = uid;
 	}
+	
+	public User() {}
 	
 	public User(String username, String password) {
 		

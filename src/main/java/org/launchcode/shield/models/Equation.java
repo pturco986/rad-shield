@@ -32,7 +32,7 @@ public class Equation {
 	
 	public Equation() {}
 	
-private int uid;
+	private int uid;
 	
 	@Id
 	@GeneratedValue
