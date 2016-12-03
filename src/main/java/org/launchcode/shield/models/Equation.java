@@ -20,109 +20,105 @@ import javax.validation.constraints.NotNull;
 @Table(name = "equation")
 public class Equation {
 	
-	private float patients; //number of patients
-	private float workload; //average workload (dose) per patient (typically .6)
-	private float limit; //permissible limit (is it open for public or only workers?)
-	private float useFactor; //User factor should always equal 1
+	private float patients; //weekly number of patients per week
+	private float occupancy; //how frequently a is room occupied
+	private float limit; //permissible limit (workers or public)
 	private float distance; //distance from machine to wall
+	private float transmission; //the amount of radiation that is emitted through the barrier based on thickness
 	
 	private User author;
 	private Date created;
 	private Date modified;
 	
-	public Equation() {}
 	
-	private int uid;
-	
-	@Id
-	@GeneratedValue
-	@NotNull
-	@Column(name = "uid", unique = true)
-	public int getUid() {
-		return this.uid;
-	}
-	
-	protected void setUid(int uid) {
-		this.uid = uid;
-	}
-	
-	public Equation(String patients, String workload, String limit, String useFactor, String distance, User author) {
+public Equation(String patients, String occupancy, String limit, String distance, User author) {
 		
 		super();
-		
-		float barrier; //The final result of these
+	
 		this.patients = Float.parseFloat(patients);
-		this.workload = Float.parseFloat(workload);
+		this.occupancy = Float.parseFloat(occupancy);
 		this.limit = Float.parseFloat(limit);
-		this.useFactor = Float.parseFloat(useFactor);
 		this.distance = Float.parseFloat(distance);
+		this.transmission = ((this.patients * this.occupancy) / (this.limit * (float)Math.pow(this.distance, 2)));
 		this.author = author;
 		this.created = new Date();
 		this.updated();
-		barrier = (this.limit)*((float)(Math.pow(this.distance, 2)))/(this.workload*this.patients);
+		
 		author.addEquation(this);
 	}
-	
+
+public Equation() {}
+
+private int uid;
+
+@Id
+@GeneratedValue
+@NotNull
+@Column(name = "uid", unique = true)
+public int getUid() {
+	return this.uid;
+}
+
+protected void setUid(int uid) {
+	this.uid = uid;
+}
+
+
 	@NotNull
 	@Column(name = "patients")
-	public Float getPatients() {
+	public float getPatients() {
 		return patients;
 	}
-
-	public void setPatients(Float patients) {
+	
+	public void setPatients(float patients) {
 		this.patients = patients;
-		this.updated();
 	}
 	
 	@NotNull
-	@Column(name = "Workload")
-	public float getWorkload() {
-		return workload;
+	@Column (name = "occupancy")
+	public float getOccupancy() {
+		return occupancy;
 	}
 
-	public void setWorkload(float workload) {
-		this.workload = workload;
-		this.updated();
+	public void setOccupancy(float occupancy) {
+		this.occupancy = occupancy;
 	}
 	
 	@NotNull
-	@Column(name = "limit")
+	@Column (name = "limit")
 	public float getLimit() {
 		return limit;
 	}
 
 	public void setLimit(float limit) {
 		this.limit = limit;
-		this.updated();
 	}
 	
 	@NotNull
-	@Column(name = "usefactor")
-	public float getUseFactor() {
-		return useFactor;
-	}
-
-	public void setUseFactor(float useFactor) {
-		this.useFactor = useFactor;
-		this.updated();
-	}
-	
-	@NotNull
-	@Column(name = "distance")
+	@Column (name = "distance")
 	public float getDistance() {
 		return distance;
 	}
 
 	public void setDistance(float distance) {
 		this.distance = distance;
-		this.updated();
+	}
+	
+	@NotNull
+	@Column (name = "transmission")
+	public float getTransmission() {
+		return transmission;
+	}
+
+	public void setTransmission(float transmission) {
+		this.transmission = transmission;
 	}
 	
 	@ManyToOne
 	public User getAuthor() {
 		return author;
 	}
-	
+
 	@SuppressWarnings("unused")
 	private void setAuthor(User author) {
 		this.author = author;
@@ -134,7 +130,7 @@ public class Equation {
 	public Date getCreated() {
 		return created;
 	}
-	
+
 	@SuppressWarnings("unused")
 	private void setCreated(Date created) {
 		this.created = created;
@@ -145,9 +141,8 @@ public class Equation {
 	public Date getModified() {
 		return modified;
 	}
-	
-	@SuppressWarnings("unused")
-	private void setModified(Date modified) {
+
+	public void setModified(Date modified) {
 		this.modified = modified;
 	}
 	
@@ -155,5 +150,5 @@ public class Equation {
 		this.modified = new Date();
 	}
 	
-	
+
 }

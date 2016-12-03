@@ -9,9 +9,9 @@
 	<!-- Show individual calculations here. Intention
 	to add additional functionality such as primary or secondary
 	wall and possibly what machine is being used -->
-	<h2 class="equation-barrier" th:text="{$equation.barrier}"></h2>
+	<h2 class="equation-transmission" th:text="{$equation.transmission}"></h2>
 	
-	<p class="equation-date">Written on <span th:text="${#dates.format(equation.created, 'yyyy-MM-dd')}"></span></p>
+	<p class="equation-date">Calculated on <span th:text="${#dates.format(equation.created, 'yyyy-MM-dd')}"></span></p>
 
 <div th:replace="template :: footer"></div>
 </body>

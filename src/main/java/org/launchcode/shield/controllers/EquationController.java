@@ -23,28 +23,26 @@ public class EquationController extends AbstractController{
 	@RequestMapping(value = "/shields/newcalc", method = RequestMethod.POST)
 	public String newEquation(HttpServletRequest request, Model model) {
 		String patients = request.getParameter("patients");
-		String workload = request.getParameter("workload");
+		String occupancy = request.getParameter("occupancy");
 		String limit = request.getParameter("limit");
-		String useFactor = request.getParameter("useFactor");
 		String distance = request.getParameter("distance");
 		User user = this.getUserFromSession(request.getSession());
 		// TODO implement the newcalc, request parameters, validation
 		// parameters, and if it is valid do the calculation
 		
-		if (patients != null && workload != null && limit != null && 
-			useFactor != null && distance != null && patients != "" &&
-			workload != "" && limit != "" && useFactor != "" && 
+		if (patients != null && occupancy != null && limit != null && 
+			distance != null && patients != "" &&
+			occupancy!= "" && limit != "" &&  
 			distance != "") {
 	
-		Equation equation = new Equation(patients, workload, limit, useFactor, distance, user);
+		Equation equation = new Equation(patients, occupancy, limit, distance, user);
 		equationDao.save(equation);
 		return String.format("redirect:/shields/%s/%s", user.getUsername(), equation.getUid());
 		//redirects to the new calculation for the shielding amount
 		}
 		
-		if (patients == null || patients == "" || workload == null ||
-			workload == "" || limit == null || limit == "" ||
-			useFactor == null || useFactor == "" || distance == null ||
+		if (patients == null || patients == "" ||  limit == null || limit == "" ||
+			occupancy == null || occupancy == "" || distance == null ||
 			distance == ""){
 			model.addAttribute("error", "You cannot leave a field blank");
 		}
