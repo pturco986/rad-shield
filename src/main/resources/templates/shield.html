@@ -10,8 +10,8 @@
 
 <div th:each="calc : ${calcs}">
 
-	<h2><a th:href="'/shield/' + ${equation.author.username} + '/' + ${equation.uid}" th:text="${equation}"></a></h2>
-	<p class="equation-author">written by <a th:href="'/shield/' + ${equation.author.username}" th:text="${equation.author.username}"></a></p>
+	<h2><a th:href="'/shield/' + ${equation.author.username} + '/' + ${equation.uid}" th:text="${equation.answer}"></a></h2>
+	<p class="equation-author">Calculated by <a th:href="'/shield/' + ${equation.author.username}" th:text="${equation.author.username}"></a></p>
 
 </div>
 

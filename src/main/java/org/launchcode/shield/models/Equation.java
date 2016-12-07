@@ -4,8 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
@@ -18,28 +16,29 @@ import javax.validation.constraints.NotNull;
 	//And that everything else beyond what is input by a user remains constant
 @Entity
 @Table(name = "equation")
-public class Equation {
+public class Equation extends AbstractEntity{
 	
-	private float patients; //weekly number of patients per week
-	private float occupancy; //how frequently a is room occupied
-	private float limit; //permissible limit (workers or public)
-	private float distance; //distance from machine to wall
-	private float transmission; //the amount of radiation that is emitted through the barrier based on thickness
+	//private float patients; //weekly number of patients per week
+	//private float occupancy; //how frequently a is room occupied
+	//private float limit; //permissible limit (workers or public)
+	//private float distance; //distance from machine to wall
+	private double answer; //the amount of radiation that is emitted through the barrier based on thickness
 	
 	private User author;
 	private Date created;
 	private Date modified;
 	
 	
-public Equation(String patients, String occupancy, String limit, String distance, User author) {
+public Equation(double answer, User author) {
 		
 		super();
 	
-		this.patients = Float.parseFloat(patients);
+		/*this.patients = Float.parseFloat(patients);
 		this.occupancy = Float.parseFloat(occupancy);
 		this.limit = Float.parseFloat(limit);
-		this.distance = Float.parseFloat(distance);
-		this.transmission = ((this.patients * this.occupancy) / (this.limit * (float)Math.pow(this.distance, 2)));
+		this.distance = Float.parseFloat(distance);*/
+		this.answer = answer; 
+				//((this.patients * this.occupancy) / (this.limit * (float)Math.pow(this.distance, 2)));
 		this.author = author;
 		this.created = new Date();
 		this.updated();
@@ -49,22 +48,7 @@ public Equation(String patients, String occupancy, String limit, String distance
 
 public Equation() {}
 
-private int uid;
-
-@Id
-@GeneratedValue
-@NotNull
-@Column(name = "uid", unique = true)
-public int getUid() {
-	return this.uid;
-}
-
-protected void setUid(int uid) {
-	this.uid = uid;
-}
-
-
-	@NotNull
+	/*@NotNull
 	@Column(name = "patients")
 	public float getPatients() {
 		return patients;
@@ -102,16 +86,16 @@ protected void setUid(int uid) {
 
 	public void setDistance(float distance) {
 		this.distance = distance;
-	}
+	}*/
 	
 	@NotNull
-	@Column (name = "transmission")
-	public float getTransmission() {
-		return transmission;
+	@Column (name = "answer")
+	public double getAnswer() {
+		return answer;
 	}
 
-	public void setTransmission(float transmission) {
-		this.transmission = transmission;
+	public void setAnswer(float answer) {
+		this.answer = answer;
 	}
 	
 	@ManyToOne
