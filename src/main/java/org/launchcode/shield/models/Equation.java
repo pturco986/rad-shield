@@ -94,7 +94,7 @@ public Equation() {}
 		return answer;
 	}
 
-	public void setAnswer(float answer) {
+	public void setAnswer(double answer) {
 		this.answer = answer;
 	}
 	
