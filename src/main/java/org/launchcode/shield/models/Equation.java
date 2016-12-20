@@ -33,10 +33,6 @@ public Equation(double answer, User author) {
 		
 		super();
 	
-		/*this.patients = Float.parseFloat(patients);
-		this.occupancy = Float.parseFloat(occupancy);
-		this.limit = Float.parseFloat(limit);
-		this.distance = Float.parseFloat(distance);*/
 		this.answer = answer; 
 				//((this.patients * this.occupancy) / (this.limit * (float)Math.pow(this.distance, 2)));
 		this.author = author;
@@ -48,46 +44,6 @@ public Equation(double answer, User author) {
 
 public Equation() {}
 
-	/*@NotNull
-	@Column(name = "patients")
-	public float getPatients() {
-		return patients;
-	}
-	
-	public void setPatients(float patients) {
-		this.patients = patients;
-	}
-	
-	@NotNull
-	@Column (name = "occupancy")
-	public float getOccupancy() {
-		return occupancy;
-	}
-
-	public void setOccupancy(float occupancy) {
-		this.occupancy = occupancy;
-	}
-	
-	@NotNull
-	@Column (name = "limit")
-	public float getLimit() {
-		return limit;
-	}
-
-	public void setLimit(float limit) {
-		this.limit = limit;
-	}
-	
-	@NotNull
-	@Column (name = "distance")
-	public float getDistance() {
-		return distance;
-	}
-
-	public void setDistance(float distance) {
-		this.distance = distance;
-	}*/
-	
 	@NotNull
 	@Column (name = "answer")
 	public double getAnswer() {

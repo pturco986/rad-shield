@@ -28,6 +28,7 @@ public class EquationController extends AbstractController{
 		String distance = request.getParameter("distance");
 		User user = this.getUserFromSession(request.getSession());
 		
+		
 		// TODO implement the newcalc, request parameters, validation
 		// parameters, and if it is valid do the calculation
 		
@@ -43,6 +44,7 @@ public class EquationController extends AbstractController{
 			double answer = (Double.parseDouble(patients) * Double.parseDouble(occupancy)) / (Double.parseDouble(limit) * Math.pow(Double.parseDouble(distance), 2.0));
 			Equation equation = new Equation(answer, user);
 			equationDao.save(equation);
+			model.addAttribute("equation", equation);
 			return String.format("redirect:/shield/%s/%s", user.getUsername(), equation.getUid());
 		//redirects to the new calculation for the shielding amount
 		}
