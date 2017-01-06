@@ -43,6 +43,7 @@ public class EquationController extends AbstractController{
 			Double.parseDouble(limit);
 			Double.parseDouble(distance);
 			double answer = (Double.parseDouble(patients) * Double.parseDouble(occupancy)) / (Double.parseDouble(limit) * Math.pow(Double.parseDouble(distance), 2.0));
+			answer = Math.round(answer);
 			Equation equation = new Equation(location, answer, user);
 			equationDao.save(equation);
 			model.addAttribute("equation", equation);

@@ -14,19 +14,19 @@
 		</label>
 	
 	    <label>
-	        <div>Number of patients</div>
+	        <div>Number of patients per day:</div>
 	        <input type="text" name="patients" th:value="${patients}"></input>
 	    </label>
 	    <label>
-	        <div>Occupancy</div>
+	        <div>Occupancy:</div>
 	        <input type="text" name="occupancy" th:value="${occupancy}"></input>
 	    </label>
 	    <label>
-	    	<div>Permissible limits</div>
+	    	<div>Permissible limits in milligray units:</div>
 	    	<input type="text" name="limit" th:value="${limit}"></input>
 	    </label>
 	    <label>
-	    	<div>Distance</div>
+	    	<div>Distance in meters:</div>
 	    	<input type="text" name="distance" th:value="${distance}"></input>
 	    </label>
 	    <div class="error" th:text="${error}"></div>
