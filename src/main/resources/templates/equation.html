@@ -9,7 +9,8 @@
 	<!-- Show individual calculations here. Intention
 	to add additional functionality such as primary or secondary
 	wall and possibly what machine is being used -->
-	<h2 class="equation-answer" th:text="${equation.answer}"></h2>
+	<h4 class="equation-location" th:text="${equation.location}"></h4>
+	<p class="equation-answer"><span th:text="${equation.answer}"></span> milligray of radiation would be transmitted through the barrier.</p>
 	
 	<p class="equation-date">Calculated on <span th:text="${#dates.format(equation.created, 'yyyy-MM-dd')}"></span></p>
 

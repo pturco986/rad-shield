@@ -22,6 +22,7 @@ public class EquationController extends AbstractController{
 	//TODO make sure to add the proper html file names TODO Double check
 	@RequestMapping(value = "/shield/newcalc", method = RequestMethod.POST)
 	public String newEquation(HttpServletRequest request, Model model) {
+		String location = request.getParameter("location");
 		String patients = request.getParameter("patients");
 		String occupancy = request.getParameter("occupancy");
 		String limit = request.getParameter("limit");
@@ -32,7 +33,7 @@ public class EquationController extends AbstractController{
 		// TODO implement the newcalc, request parameters, validation
 		// parameters, and if it is valid do the calculation
 		
-		if (patients != null && occupancy != null && limit != null && 
+		if (location != null && location != "" && patients != null && occupancy != null && limit != null && 
 			distance != null && patients != "" &&
 			occupancy!= "" && limit != "" &&  
 			distance != "") 
@@ -42,14 +43,14 @@ public class EquationController extends AbstractController{
 			Double.parseDouble(limit);
 			Double.parseDouble(distance);
 			double answer = (Double.parseDouble(patients) * Double.parseDouble(occupancy)) / (Double.parseDouble(limit) * Math.pow(Double.parseDouble(distance), 2.0));
-			Equation equation = new Equation(answer, user);
+			Equation equation = new Equation(location, answer, user);
 			equationDao.save(equation);
 			model.addAttribute("equation", equation);
 			return String.format("redirect:/shield/%s/%s", user.getUsername(), equation.getUid());
 		//redirects to the new calculation for the shielding amount
 		}
 		
-		if (patients == null || patients == "" ||  limit == null || limit == "" ||
+		if (location == null || location == "" || patients == null || patients == "" ||  limit == null || limit == "" ||
 			occupancy == null || occupancy == "" || distance == null ||
 			distance == "")
 		{

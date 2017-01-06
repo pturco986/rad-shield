@@ -23,16 +23,16 @@ public class Equation extends AbstractEntity{
 	//private float limit; //permissible limit (workers or public)
 	//private float distance; //distance from machine to wall
 	private double answer; //the amount of radiation that is emitted through the barrier based on thickness
-	
+	private String location;
 	private User author;
 	private Date created;
 	private Date modified;
 	
 	
-public Equation(double answer, User author) {
+public Equation(String location, double answer, User author) {
 		
 		super();
-	
+		this.location = location; //user inputs what hospital, building, and floor, possibly room for where this equation is going to happen.
 		this.answer = answer; 
 				//((this.patients * this.occupancy) / (this.limit * (float)Math.pow(this.distance, 2)));
 		this.author = author;
@@ -45,6 +45,17 @@ public Equation(double answer, User author) {
 public Equation() {}
 
 	@NotNull
+	@Column (name = "location")
+	public String getLocation() {
+		return location;
+	}
+	
+	public void setLocation(String location) {
+		this.location = location;
+		this.updated();
+	}
+
+	@NotNull
 	@Column (name = "answer")
 	public double getAnswer() {
 		return answer;
@@ -52,6 +63,7 @@ public Equation() {}
 
 	public void setAnswer(double answer) {
 		this.answer = answer;
+		this.updated();
 	}
 	
 	@ManyToOne

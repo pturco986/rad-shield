@@ -11,8 +11,8 @@
 
 
 <div th:each="equation : ${equations}">
-
-	<h2><a th:href="'/shield/' + ${equation.author.username} + '/' + ${equation.uid}" th:text="${equation.answer}"></a></h2>
+	<h3> <a th:href="'/shield/' + ${equation.author.username} + '/' + ${equation.uid}" th:text="${equation.location}"></a></h3>
+	<p class="equation-answer"> <span th:text="${equation.answer}"></span></p>
 	<p class="equation-author">Calculated by <a th:href="'/shield/' + ${equation.author.username}" th:text="${equation.author.username}"></a></p>
 
 </div>

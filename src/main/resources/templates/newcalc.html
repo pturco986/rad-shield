@@ -7,6 +7,12 @@
 	<div th:replace="template :: navigation"></div>
 
 	<form method="post">
+		<label>
+			<div>Please enter the location in the format of:
+			Hospital, building, floor, room.</div>
+			<input type="text" name="location" th:value="${location}"></input>
+		</label>
+	
 	    <label>
 	        <div>Number of patients</div>
 	        <input type="text" name="patients" th:value="${patients}"></input>
