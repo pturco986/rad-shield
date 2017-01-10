@@ -23,6 +23,7 @@ public class EquationController extends AbstractController{
 	@RequestMapping(value = "/shield/newcalc", method = RequestMethod.POST)
 	public String newEquation(HttpServletRequest request, Model model) {
 		String location = request.getParameter("location");
+		String barrier = request.getParameter("barrier");
 		String patients = request.getParameter("patients");
 		String occupancy = request.getParameter("occupancy");
 		String limit = request.getParameter("limit");
@@ -44,7 +45,7 @@ public class EquationController extends AbstractController{
 			Double.parseDouble(distance);
 			double answer = (Double.parseDouble(patients) * Double.parseDouble(occupancy)) / (Double.parseDouble(limit) * Math.pow(Double.parseDouble(distance), 2.0));
 			answer = Math.round(answer);
-			Equation equation = new Equation(location, answer, user);
+			Equation equation = new Equation(location, barrier, answer, user);
 			equationDao.save(equation);
 			model.addAttribute("equation", equation);
 			return String.format("redirect:/shield/%s/%s", user.getUsername(), equation.getUid());

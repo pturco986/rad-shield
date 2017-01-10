@@ -12,6 +12,20 @@
 			Hospital, building, floor, room.</div>
 			<input type="text" name="location" th:value="${location}"></input>
 		</label>
+		
+		<label>
+			<div>Select a barrier material:</div>
+			<select th:field="*{barrier}"> 
+<!-- 			I need to look into adding a barrier.java object since that is apparently the requirement here.
+				Need to do the same thing for the preshielding as well, if I don't go with boolean -->
+			<option th:each="barrier : ${allBarriers}"
+					th:value="${barrier}"
+					th:text="#{${'barrier.lead.' + lead}}">lead</option>
+			<option th:each="barrier : ${allBarriers}"
+					th:value="${barrier}"
+					th:text="#{${'barrier.concrete.' + concrete}}">concrete</option>
+			</select>
+		</label>
 	
 	    <label>
 	        <div>Number of patients per day:</div>
