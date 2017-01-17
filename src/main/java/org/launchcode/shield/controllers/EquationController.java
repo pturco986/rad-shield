@@ -3,8 +3,9 @@ package org.launchcode.shield.controllers;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import java.lang.Math.*;
+
 import org.launchcode.shield.models.Equation;
+import org.launchcode.shield.models.Equation.Barrier;
 import org.launchcode.shield.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,7 @@ public class EquationController extends AbstractController{
 	@RequestMapping(value = "/shield/newcalc", method = RequestMethod.POST)
 	public String newEquation(HttpServletRequest request, Model model) {
 		String location = request.getParameter("location");
-		String barrier = request.getParameter("barrier");
+		Barrier barrier = request.getParameter("barrier");
 		String patients = request.getParameter("patients");
 		String occupancy = request.getParameter("occupancy");
 		String limit = request.getParameter("limit");

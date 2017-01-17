@@ -6,7 +6,7 @@
 
 	<div th:replace="template :: navigation"></div>
 
-	<form method="post">
+	<form method="post" th:object="${equation}">
 		<label>
 			<div>Please enter the location in the format of:
 			Hospital, building, floor, room.</div>
@@ -15,15 +15,11 @@
 		
 		<label>
 			<div>Select a barrier material:</div>
-			<select th:field="*{barrier}"> 
-<!-- 			I need to look into adding a barrier.java object since that is apparently the requirement here.
-				Need to do the same thing for the preshielding as well, if I don't go with boolean -->
-			<option th:each="barrier : ${allBarriers}"
-					th:value="${barrier}"
-					th:text="#{${'barrier.lead.' + lead}}">lead</option>
-			<option th:each="barrier : ${allBarriers}"
-					th:value="${barrier}"
-					th:text="#{${'barrier.concrete.' + concrete}}">concrete</option>
+			<select>
+			<option th:each="barrier : ${T{org.launchcode.Equation.Barrier).values()}"
+				th:value="${barrier}"
+				th:text="${barrier}">
+			</option>
 			</select>
 		</label>
 	
