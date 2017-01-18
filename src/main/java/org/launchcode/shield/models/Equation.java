@@ -24,7 +24,7 @@ public class Equation extends AbstractEntity{
 	//private float distance; //distance from machine to wall
 	private double answer; //the amount of radiation that is emitted through the barrier based on thickness
 	private String location;
-	private Barrier barrier;
+	private String barrier;
 	private User author;
 	private Date created;
 	private Date modified;
@@ -34,7 +34,7 @@ public class Equation extends AbstractEntity{
 	}
 	
 	
-public Equation(String location, Barrier barrier, double answer, User author) {
+public Equation(String location, String barrier, double answer, User author) {
 		
 		super();
 		this.location = location; //user inputs what hospital, building, and floor, possibly room for where this equation is going to happen.
@@ -64,11 +64,11 @@ public Equation() {}
 	
 	@NotNull
 	@Column (name="barrier")
-	public Barrier getBarrier() {
+	public String getBarrier() {
 		return barrier;
 	}
 	
-	public void setBarrier(Barrier barrier) {
+	public void setBarrier(String barrier) {
 		this.barrier = barrier;
 		this.updated();
 	}

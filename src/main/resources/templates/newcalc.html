@@ -15,11 +15,9 @@
 		
 		<label>
 			<div>Select a barrier material:</div>
-			<select>
-			<option th:each="barrier : ${T{org.launchcode.Equation.Barrier).values()}"
-				th:value="${barrier}"
-				th:text="${barrier}">
-			</option>
+			<select name="barrier">
+			<option value="lead">Lead</option>
+			<option value="concrete">Concrete</option>
 			</select>
 		</label>
 	

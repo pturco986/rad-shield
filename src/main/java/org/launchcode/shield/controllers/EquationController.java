@@ -24,7 +24,7 @@ public class EquationController extends AbstractController{
 	@RequestMapping(value = "/shield/newcalc", method = RequestMethod.POST)
 	public String newEquation(HttpServletRequest request, Model model) {
 		String location = request.getParameter("location");
-		Barrier barrier = request.getParameter("barrier");
+		String barrier = request.getParameter("barrier");
 		String patients = request.getParameter("patients");
 		String occupancy = request.getParameter("occupancy");
 		String limit = request.getParameter("limit");
