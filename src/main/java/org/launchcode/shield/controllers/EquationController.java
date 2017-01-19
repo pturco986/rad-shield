@@ -25,6 +25,7 @@ public class EquationController extends AbstractController{
 	public String newEquation(HttpServletRequest request, Model model) {
 		String location = request.getParameter("location");
 		String barrier = request.getParameter("barrier");
+		String preshield = request.getParameter("preshield");
 		String patients = request.getParameter("patients");
 		String occupancy = request.getParameter("occupancy");
 		String limit = request.getParameter("limit");
@@ -46,7 +47,29 @@ public class EquationController extends AbstractController{
 			Double.parseDouble(distance);
 			double answer = (Double.parseDouble(patients) * Double.parseDouble(occupancy)) / (Double.parseDouble(limit) * Math.pow(Double.parseDouble(distance), 2.0));
 			answer = Math.round(answer);
-			Equation equation = new Equation(location, barrier, answer, user);
+			
+			//This is where if-else statements need to be nested in regards to the equations for finding out barrier thickness
+			//These if else statements are going to be based off 3 factors, which are the type of barrier, the shielding, and later the machine
+			//Hopefully these work
+//				if (barrier == "lead" && preshield == "pre-shielded") {
+//					calculate here
+//					return thickness;
+//				}
+//				else if (barrier == "lead" && preshield == "unshielded") {
+//					calculate here
+//					return thickness;
+//				}
+//				else if (barrier == "concrete" && preshield == "pre-shielded") {
+//					calculate here
+//					return thickness;
+//				}
+//				else if (barrier == "concrete" && preshield == "unshielded") {
+//					calculate here
+//					return thickness;
+//				}
+			
+			
+			Equation equation = new Equation(location, barrier, preshield, answer, user);
 			equationDao.save(equation);
 			model.addAttribute("equation", equation);
 			return String.format("redirect:/shield/%s/%s", user.getUsername(), equation.getUid());

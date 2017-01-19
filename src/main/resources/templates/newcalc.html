@@ -12,7 +12,6 @@
 			Hospital, building, floor, room.</div>
 			<input type="text" name="location" th:value="${location}"></input>
 		</label>
-		
 		<label>
 			<div>Select a barrier material:</div>
 			<select name="barrier">
@@ -20,7 +19,13 @@
 			<option value="concrete">Concrete</option>
 			</select>
 		</label>
-	
+		<label>
+			<div>Will this barrier be pre-shielded or unshielded?</div>
+			<select name="preshield">
+			<option value="pre-shielded">Pre-shielded</option>
+			<option value="unshielded">Unshielded</option>
+			</select>
+		</label>
 	    <label>
 	        <div>Number of patients per day:</div>
 	        <input type="text" name="patients" th:value="${patients}"></input>
