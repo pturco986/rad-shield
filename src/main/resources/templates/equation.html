@@ -12,10 +12,21 @@
 	<h4 class="equation-location" th:text="${equation.location}"></h4>
 	<p class="equation-barrier">You are using a <b> <span th:text="${equation.preshield}"> </span>
 	<span th:text="${equation.barrier}"></span></b> barrier.</p>
+	<p class="equation-walltype">The machine is pointing at the <b> <span th:text="${equation.walltype}"></span></b>.</p>
 	<p class="equation-answer"><span th:text="${equation.answer}"></span> milligray of radiation is produced that requires a barrier.</p>
 	
 	<p class="equation-date">Calculated on <span th:text="${#dates.format(equation.created, 'yyyy-MM-dd')}"></span></p>
 
-<div th:replace="template :: footer"></div>
+	<style>
+	    button {margin-top: 10px;}
+	</style>
+	
+	<div class="container-center">
+	<button class="btn btn btn-default active" value="Previous Page" onClick="history.go(-1);return true;">Return to previous page</button>
+	</div>
+
+	<div th:replace="template :: footer"></div>
+	
+	
 </body>
 </html>	

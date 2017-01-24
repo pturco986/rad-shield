@@ -26,6 +26,7 @@ public class Equation extends AbstractEntity{
 	private String location;
 	private String barrier;
 	private String preshield;
+	private String walltype;
 	private User author;
 	private Date created;
 	private Date modified;
@@ -35,12 +36,13 @@ public class Equation extends AbstractEntity{
 	}
 	
 	
-public Equation(String location, String barrier, String preshield, double answer, User author) {
+public Equation(String location, String barrier, String preshield, String walltype, double answer, User author) {
 		
 		super();
 		this.location = location; //user inputs what hospital, building, and floor, possibly room for where this equation is going to happen.
 		this.barrier = barrier;
 		this.preshield = preshield;
+		this.walltype = walltype;
 		this.answer = answer;
 		
 				//((this.patients * this.occupancy) / (this.limit * (float)Math.pow(this.distance, 2)));
@@ -83,6 +85,17 @@ public Equation() {}
 	
 	public void setPreshield(String preshield) {
 		this.preshield = preshield;
+		this.updated();
+	}
+	
+	@NotNull
+	@Column (name = "walltype")
+	public String getWalltype() {
+		return walltype;
+	}
+	
+	public void setWalltype(String walltype) {
+		this.walltype = walltype;
 		this.updated();
 	}
 

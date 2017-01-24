@@ -1,25 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="dochead">
-	<link th:href="@{/css/normalize.css}" rel="stylesheet" />
+<!-- This is the bootstrap I am using -->
+<link th:href="@{/css/normalize.css}" rel="stylesheet" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
 	<link th:href="@{/css/styles.css}" rel="stylesheet" />
-	<title>Radiation Shielding</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script th:src="@{/js/main.js}"> </script>
+	
+	<style>
+		body {padding-top: 50px;}
+		footer {padding-top: 10px;}
+	</style>
+	
+
+<!-- 	<link th:href="@{/css/normalize.css}" rel="stylesheet" /> -->
+<!-- 	<link th:href="@{/css/styles.css}" rel="stylesheet" /> -->
 </head>
 
 <body>
 
-<nav th:fragment="navigation">
-	<ul id="user-account">
-		<li><a href="/login">Login</a></li>
-		<li><a href="/logout">Logout</a></li>	
-	</ul>
-	<ul>
-		<li><a href="/">home</a></li>
-		<li><a href="/shield">All calculations</a></li>
-		<li><a href="/shield/newcalc">New calculation</a></li>
-	</ul>
+<nav class= "navbar navbar-inverse navbar-fixed-top" th:fragment="navigation">
+	<div class="container-fluid">
+		<!-- Title of the website/logo -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="#" class="navbar-brand">Radiation Shielding</a>
+		</div>
+	
+		<!-- Menu items below -->
+		<div class="collapse navbar-collapse" id="mainNavBar">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/shield">All calculations</a></li>
+				<li><a href="/shield/newcalc">New calculation</a></li>
+			</ul>
+	
+			<ul class="nav navbar-nav navbar-right" id="user-account">
+				<li><a href="/login">Login</a></li>
+				<li><a href="/logout">Logout</a></li>	
+			</ul>
+		</div>
+	</div>
 </nav>
 
-<footer th:fragment="footer"><em>All equations and calculations follow the National Council on Radiation Protection and Measurements guidelines</em></footer>
+<footer th:fragment="footer">
+	<div class="alert alert-info fade in">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><em>All equations and calculations follow the <a href="http://ncrponline.org/">National Council on Radiation Protection and Measurements</a> guidelines</em>
+	</div>
+</footer>
 </body>
 </html>

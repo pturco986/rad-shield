@@ -5,45 +5,65 @@
 <body>
 
 	<div th:replace="template :: navigation"></div>
-
-	<form method="post" th:object="${equation}">
-		<label>
-			<div>Please enter the location in the format of:
-			Hospital, building, floor, room.</div>
+	
+	<style>
+		#inputs{padding-bottom: 20px;}
+	</style>
+	
+	<form method="post" style="alignment : center;" th:object="${equation}">
+	
+		<div class="shield-group" id="inputs">
+			<label>Please enter the location in the format of:
+			Hospital, building, floor, room.</label>
 			<input type="text" name="location" th:value="${location}"></input>
-		</label>
-		<label>
-			<div>Select a barrier material:</div>
+		</div>
+		<div class="shield-group" id="inputs">
+			<label>Select a barrier material:</label>
 			<select name="barrier">
 			<option value="lead">Lead</option>
 			<option value="concrete">Concrete</option>
 			</select>
-		</label>
-		<label>
-			<div>Will this barrier be pre-shielded or unshielded?</div>
+		</div>
+		<div class="shield-group" id="inputs">
+			<label>Will this barrier be preshielded or unshielded?</label>
 			<select name="preshield">
-			<option value="pre-shielded">Pre-shielded</option>
+			<option value="preshielded">Preshielded</option>
 			<option value="unshielded">Unshielded</option>
 			</select>
-		</label>
-	    <label>
-	        <div>Number of patients per day:</div>
+		</div>
+		<div class="shield-group" id="inputs">
+			<label>What type of wall are you calculating for?</label>
+			<select name="walltype">
+			<option value="chest bucky wall">Chest Bucky Wall</option>
+			<option value="2% wall opposite chest bucky">2% Wall Opposite Chest Bucky</option>
+			<option value="cross-table lateral wall">Cross-Table Lateral Wall</option>
+			<option value="floor">Floor</option>
+			</select>
+		</div>
+	    <div class="shield-group" id="inputs"> 
+	    	<label>Number of patients per day:</label>
 	        <input type="text" name="patients" th:value="${patients}"></input>
-	    </label>
-	    <label>
-	        <div>Occupancy:</div>
+	     </div>
+	    <div class="shield-group" id="inputs">
+	        <label>Occupancy:</label>
 	        <input type="text" name="occupancy" th:value="${occupancy}"></input>
-	    </label>
-	    <label>
-	    	<div>Permissible limits in milligray units:</div>
+	    </div>
+	    <div class="shield-group" id="inputs">
+	    	<label>Permissible limits in milligray units:</label>
 	    	<input type="text" name="limit" th:value="${limit}"></input>
-	    </label>
-	    <label>
-	    	<div>Distance in meters:</div>
+	    </div>
+	    <div class="shield-group" id="inputs">
+	    	<label>Distance in meters:</label>
 	    	<input type="text" name="distance" th:value="${distance}"></input>
-	    </label>
+	    </div>
 	    <div class="error" th:text="${error}"></div>
-	    <button type="submit">Calculate shielding!</button>
+	    <div class="submit-button">
+	    <style>
+	    button {margin-top: 10px;
+	    		margin-bottom: 5px;}
+	    </style>
+	    	<button class="btn btn-default active" type="submit">Calculate shielding!</button>
+	    </div>
 	</form>
 	
 	<div th:replace="template :: footer"></div>

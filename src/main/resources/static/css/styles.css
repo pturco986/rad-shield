@@ -70,3 +70,8 @@ nav ul li {
 nav #user-account {
     float: right;
 }
+
+button {
+    padding-top: 5px; 
+    padding-bottom: 5px;
+}

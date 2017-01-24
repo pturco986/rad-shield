@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.launchcode.shield.models.Equation;
-import org.launchcode.shield.models.Equation.Barrier;
 import org.launchcode.shield.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +25,7 @@ public class EquationController extends AbstractController{
 		String location = request.getParameter("location");
 		String barrier = request.getParameter("barrier");
 		String preshield = request.getParameter("preshield");
+		String walltype = request.getParameter("walltype");
 		String patients = request.getParameter("patients");
 		String occupancy = request.getParameter("occupancy");
 		String limit = request.getParameter("limit");
@@ -51,7 +51,7 @@ public class EquationController extends AbstractController{
 			//This is where if-else statements need to be nested in regards to the equations for finding out barrier thickness
 			//These if else statements are going to be based off 3 factors, which are the type of barrier, the shielding, and later the machine
 			//Hopefully these work
-//				if (barrier == "lead" && preshield == "pre-shielded") {
+//				if (barrier == "lead" && preshield == "preshielded") {
 //					calculate here
 //					return thickness;
 //				}
@@ -59,7 +59,7 @@ public class EquationController extends AbstractController{
 //					calculate here
 //					return thickness;
 //				}
-//				else if (barrier == "concrete" && preshield == "pre-shielded") {
+//				else if (barrier == "concrete" && preshield == "preshielded") {
 //					calculate here
 //					return thickness;
 //				}
@@ -69,7 +69,7 @@ public class EquationController extends AbstractController{
 //				}
 			
 			
-			Equation equation = new Equation(location, barrier, preshield, answer, user);
+			Equation equation = new Equation(location, barrier, preshield, walltype, answer, user);
 			equationDao.save(equation);
 			model.addAttribute("equation", equation);
 			return String.format("redirect:/shield/%s/%s", user.getUsername(), equation.getUid());
