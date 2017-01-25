@@ -51,22 +51,70 @@ public class EquationController extends AbstractController{
 			//This is where if-else statements need to be nested in regards to the equations for finding out barrier thickness
 			//These if else statements are going to be based off 3 factors, which are the type of barrier, the shielding, and later the machine
 			//Hopefully these work
-//				if (barrier == "lead" && preshield == "preshielded") {
-//					calculate here
-//					return thickness;
-//				}
-//				else if (barrier == "lead" && preshield == "unshielded") {
-//					calculate here
-//					return thickness;
-//				}
-//				else if (barrier == "concrete" && preshield == "preshielded") {
-//					calculate here
-//					return thickness;
-//				}
-//				else if (barrier == "concrete" && preshield == "unshielded") {
-//					calculate here
-//					return thickness;
-//				}
+//			if (barrier == "lead" && preshield == "preshielded" && walltype == "chest bucky wall") {
+//				calculate here
+//				return thickness;
+//		}
+//			else if (barrier == "lead" && preshield == "preshielded" && walltype == "2% wall opposite chest bucky") {
+//			calculate here
+//			return thickness;
+//		}
+//			else if (barrier == "lead" && preshield == "preshielded" && walltype == "cross-table lateral wall") {
+//			calculate here
+//			return thickness;
+//		}
+//			else if (barrier == "lead" && preshield == "preshielded" && walltype == "floor") {
+//			calculate here
+//			return thickness;
+//		}
+//			else if (barrier == "lead" && preshield == "unshielded" && walltype == "chest bucky wall") {
+//				calculate here
+//				return thickness;
+//		}
+//			else if (barrier == "lead" && preshield == "unshielded" && walltype == "2% wall opposite chest bucky") {
+//				calculate here
+//				return thickness;
+//		}
+//			else if (barrier == "lead" && preshield == "unshielded" && walltype == "cross-table lateral wall") {
+//			calculate here
+//			return thickness;
+//		}
+//			else if (barrier == "lead" && preshield == "unshielded" && walltype == "floor") {
+//			calculate here
+//			return thickness;
+//		}
+//			else if (barrier == "concrete" && preshield == "preshielded" && walltype == "chest bucky wall") {
+//				calculate here
+//				return thickness;
+//		}
+//			else if (barrier == "concrete" && preshield == "preshielded" && walltype == "2% wall opposite chest bucky") {
+//			calculate here
+//			return thickness;
+//		}
+//			else if (barrier == "concrete" && preshield == "preshielded" && walltype == "cross-table lateral wall") {
+//			calculate here
+//			return thickness;
+//		}
+//			else if (barrier == "concrete" && preshield == "preshielded" && walltype == "floor") {
+//			calculate here
+//			return thickness;
+//		}
+//			else if (barrier == "concrete" && preshield == "unshielded" && walltype == "chest bucky wall") {
+//				calculate here
+//				return thickness;
+//		}
+//			else if (barrier == "concrete" && preshield == "unshielded" && walltype == "2% wall opposite chest bucky") {
+//			calculate here
+//			return thickness;
+//		}
+//			else if (barrier == "concrete" && preshield == "unshielded" && walltype == "cross-table lateral wall") {
+//			calculate here
+//			return thickness;
+//		}
+//			else if (barrier == "concrete" && preshield == "unshielded" && walltype == "floor") {
+//			calculate here
+//			return thickness;
+//		}
 			
 			
 			Equation equation = new Equation(location, barrier, preshield, walltype, answer, user);
