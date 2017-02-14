@@ -48,13 +48,12 @@ public class EquationController extends AbstractController{
 			double answer = (Double.parseDouble(patients) * Double.parseDouble(occupancy)) / (Double.parseDouble(limit) * Math.pow(Double.parseDouble(distance), 2.0));
 			answer = Math.round(answer);
 			
-			//This is where if-else statements need to be nested in regards to the equations for finding out barrier thickness
-			//These if else statements are going to be based off 3 factors, which are the type of barrier, the shielding, and later the machine
-			//Hopefully these work
-//			if (barrier == "lead" && preshield == "preshielded" && walltype == "chest bucky wall") {
-//				calculate here
-//				return thickness;
-//		}
+			
+			//if (barrier == "lead" && preshield == "preshielded" && walltype == "chest bucky wall") {
+		//	double thickness = ((1 / 2.346(4.982 * Math.pow(10, -1)))Math.log((Math.pow(2.3 * 1 * .5 * patients, (4.982 * Math.pow(10, -1)) + 
+			//((1.590 * Math.pow(10, 1)) / ((4.982 * Math.pow(10, -1)))) / (1 + ((1.590 * Math.pow(10, 1)) / ((4.982 * Math.pow(10, -1))))))));
+			//thickness = Math.round(thickness);
+		//}
 //			else if (barrier == "lead" && preshield == "preshielded" && walltype == "2% wall opposite chest bucky") {
 //			calculate here
 //			return thickness;
@@ -116,7 +115,7 @@ public class EquationController extends AbstractController{
 //			return thickness;
 //		}
 			
-			
+		
 			Equation equation = new Equation(location, barrier, preshield, walltype, answer, user);
 			equationDao.save(equation);
 			model.addAttribute("equation", equation);

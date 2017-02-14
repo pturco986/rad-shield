@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="dochead">
 <!-- This is the bootstrap I am using -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link th:href="@{/css/normalize.css}" rel="stylesheet" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
@@ -15,9 +17,6 @@
 		footer {padding-top: 10px;}
 	</style>
 	
-
-<!-- 	<link th:href="@{/css/normalize.css}" rel="stylesheet" /> -->
-<!-- 	<link th:href="@{/css/styles.css}" rel="stylesheet" /> -->
 </head>
 
 <body>
@@ -50,6 +49,7 @@
 	</div>
 </nav>
 
+<!-- Footer fragment here -->
 <footer th:fragment="footer">
 	<div class="alert alert-success">
 		<em>All equations and calculations follow the <a href="http://ncrponline.org/">National Council on Radiation Protection and Measurements</a> guidelines</em>
