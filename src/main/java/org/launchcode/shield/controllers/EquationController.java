@@ -15,6 +15,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class EquationController extends AbstractController{
 	
+	private double alpha;
+	private double beta;
+	private double gamma;
+	private double alga;
+	private double boa;
+	private double onealga;
+	private double kaput;
+	private double pdp;
+	private double kapdp;
+	private double kapg;
+	private double kapboa;
+	private double oneboa;
+	private double e;
+	
 	@RequestMapping(value ="/shield/newcalc", method = RequestMethod.GET)
 	public String newEquationForm() {
 		return "newcalc";
@@ -33,6 +47,7 @@ public class EquationController extends AbstractController{
 		User user = this.getUserFromSession(request.getSession());
 		
 		
+		
 		// TODO implement the newcalc, request parameters, validation
 		// parameters, and if it is valid do the calculation
 		
@@ -47,13 +62,28 @@ public class EquationController extends AbstractController{
 			Double.parseDouble(distance);
 			double answer = (Double.parseDouble(patients) * Double.parseDouble(occupancy)) / (Double.parseDouble(limit) * Math.pow(Double.parseDouble(distance), 2.0));
 			answer = Math.round(answer);
+			double thickness = 0;
+			
+			if (barrier == "lead" && preshield == "preshielded" && walltype == "chest bucky wall") {
+			alpha = 2.346;
+			beta = 1.308 * Math.pow(10, 1);
+			gamma = 4.982 * Math.pow(10, -1);
+			boa = beta / alpha;
+			alga = alpha * gamma;
+			onealga = 1.0 / alga;
+			oneboa = 1.0 + boa;
+			kaput = (2.3 * 1.0 * Double.parseDouble(occupancy) * Double.parseDouble(patients));
+			pdp = (Double.parseDouble(limit) * Math.pow(Double.parseDouble(distance), 2));
+			kapdp = kaput / pdp;
+			kapg = Math.pow(kapdp, gamma);
+			kapboa = kapg + boa;
+			oneboa = 1.0 + boa;
+			e = kapboa / oneboa;
+			thickness = onealga * Math.log(e);
+			thickness = Math.round(thickness);
 			
 			
-			//if (barrier == "lead" && preshield == "preshielded" && walltype == "chest bucky wall") {
-		//	double thickness = ((1 / 2.346(4.982 * Math.pow(10, -1)))Math.log((Math.pow(2.3 * 1 * .5 * patients, (4.982 * Math.pow(10, -1)) + 
-			//((1.590 * Math.pow(10, 1)) / ((4.982 * Math.pow(10, -1)))) / (1 + ((1.590 * Math.pow(10, 1)) / ((4.982 * Math.pow(10, -1))))))));
-			//thickness = Math.round(thickness);
-		//}
+		}
 //			else if (barrier == "lead" && preshield == "preshielded" && walltype == "2% wall opposite chest bucky") {
 //			calculate here
 //			return thickness;
@@ -116,7 +146,8 @@ public class EquationController extends AbstractController{
 //		}
 			
 		
-			Equation equation = new Equation(location, barrier, preshield, walltype, answer, user);
+			
+			Equation equation = new Equation(location, barrier, preshield, walltype, answer, thickness, user);
 			equationDao.save(equation);
 			model.addAttribute("equation", equation);
 			return String.format("redirect:/shield/%s/%s", user.getUsername(), equation.getUid());
