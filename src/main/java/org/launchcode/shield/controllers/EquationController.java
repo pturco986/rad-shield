@@ -28,6 +28,9 @@ public class EquationController extends AbstractController{
 	private double kapboa;
 	private double oneboa;
 	private double e;
+	private double number;
+	
+
 	
 	@RequestMapping(value ="/shield/newcalc", method = RequestMethod.GET)
 	public String newEquationForm() {
@@ -40,6 +43,7 @@ public class EquationController extends AbstractController{
 		String barrier = request.getParameter("barrier");
 		String preshield = request.getParameter("preshield");
 		String walltype = request.getParameter("walltype");
+		String usefactor = request.getParameter("usefactor");
 		String patients = request.getParameter("patients");
 		String occupancy = request.getParameter("occupancy");
 		String limit = request.getParameter("limit");
@@ -62,7 +66,8 @@ public class EquationController extends AbstractController{
 			Double.parseDouble(distance);
 			double answer = (Double.parseDouble(patients) * Double.parseDouble(occupancy)) / (Double.parseDouble(limit) * Math.pow(Double.parseDouble(distance), 2.0));
 			answer = Math.round(answer);
-			double thickness = 0;
+			
+			
 			
 			if (barrier == "lead" && preshield == "preshielded" && walltype == "chest bucky wall") {
 			alpha = 2.346;
@@ -72,15 +77,15 @@ public class EquationController extends AbstractController{
 			alga = alpha * gamma;
 			onealga = 1.0 / alga;
 			oneboa = 1.0 + boa;
-			kaput = (2.3 * 1.0 * Double.parseDouble(occupancy) * Double.parseDouble(patients));
+			kaput = (2.3 * Double.parseDouble(usefactor) * Double.parseDouble(occupancy) * Double.parseDouble(patients));
 			pdp = (Double.parseDouble(limit) * Math.pow(Double.parseDouble(distance), 2));
 			kapdp = kaput / pdp;
 			kapg = Math.pow(kapdp, gamma);
 			kapboa = kapg + boa;
 			oneboa = 1.0 + boa;
 			e = kapboa / oneboa;
-			thickness = onealga * Math.log(e);
-			thickness = Math.round(thickness);
+			number = onealga * Math.log(e);
+			number = Math.round(number);
 			
 			
 		}
@@ -147,6 +152,7 @@ public class EquationController extends AbstractController{
 			
 		
 			
+			double thickness = number;
 			Equation equation = new Equation(location, barrier, preshield, walltype, answer, thickness, user);
 			equationDao.save(equation);
 			model.addAttribute("equation", equation);

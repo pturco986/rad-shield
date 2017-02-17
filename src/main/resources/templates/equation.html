@@ -13,7 +13,7 @@
 	<span th:text="${equation.barrier}"></span></b> barrier.</p>
 	<p class="equation-walltype">You are looking at the <b> <span th:text="${equation.walltype}"></span></b>.</p>
 	<p class="equation-answer"><span th:text="${equation.answer}"></span> milligray of radiation is produced that requires a barrier for your specified wall type.</p>
-	
+	<p class="equation-thickness">Your <span th:text="${equation.barrier}"></span> barrier requires a thickness of <span th:text="${equation.thickness}"></span> millimeters.</p>
 	<p class="equation-date">Calculated on <span th:text="${#dates.format(equation.created, 'yyyy-MM-dd')}"></span></p>
 
 	<style>

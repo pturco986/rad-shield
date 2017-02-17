@@ -20,24 +20,31 @@
 		<div class="shield-group" id="inputs">
 			<label>Select a barrier material:</label>
 			<select name="barrier">
-			<option value="lead">Lead</option>
-			<option value="concrete">Concrete</option>
+				<option value="lead">Lead</option>
+				<option value="concrete">Concrete</option>
 			</select>
 		</div>
 		<div class="shield-group" id="inputs">
 			<label>Will this barrier be preshielded or unshielded?</label>
 			<select name="preshield">
-			<option value="preshielded">Preshielded</option>
-			<option value="unshielded">Unshielded</option>
+				<option value="preshielded">Preshielded</option>
+				<option value="unshielded">Unshielded</option>
 			</select>
 		</div>
 		<div class="shield-group" id="inputs">
 			<label>What type of wall are you calculating for?</label>
 			<select name="walltype">
-			<option value="chest bucky wall">Chest Bucky Wall</option>
-			<option value="2% wall opposite chest bucky">2% Wall Opposite Chest Bucky</option>
-			<option value="cross-table lateral wall">Cross-Table Lateral Wall</option>
-			<option value="floor">Floor</option>
+				<option value="chest bucky wall">Chest Bucky Wall</option>
+				<option value="2% wall opposite chest bucky">2% Wall Opposite Chest Bucky</option>
+				<option value="cross-table lateral wall">Cross-Table Lateral Wall</option>
+				<option value="floor">Floor</option>
+			</select>
+		</div>
+		<div class="shield-group" id="inputs">
+			<label>What is the weekly permissible limit for this calculation?</label>
+			<select name="limit">
+				<option value="0.1">Controlled area -- 0.1 mGy per week</option>
+				<option value="0.02">Uncontrolled area -- 0.02 mGy per week</option>
 			</select>
 		</div>
 	    <div class="shield-group" id="inputs"> 
@@ -49,8 +56,8 @@
 	        <input type="text" name="occupancy" th:value="${occupancy}"></input>
 	    </div>
 	    <div class="shield-group" id="inputs">
-	    	<label>Permissible limits in milligray units:</label>
-	    	<input type="text" name="limit" th:value="${limit}"></input>
+	    	<label>What is the use factor for this location (in decimals):</label>
+	    	<input type="text" name="usefactor" th:value="${usefactor}"></input>
 	    </div>
 	    <div class="shield-group" id="inputs">
 	    	<label>Distance in meters:</label>
